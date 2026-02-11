@@ -1,0 +1,1013 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>欧亚菲 - AI产品落地解决方案</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+        --primary:#0a0e27;
+        --secondary:#1a1f3a;
+        --accent:#6366f1;
+        --accent-light:#818cf8;
+        --text:#e2e8f0;
+        --text-secondary:#94a3b8;
+        --border:#2d3748;
+        --gradient:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+        --card-bg:rgba(26,31,58,.6);
+    }
+    body{
+        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+        background:var(--primary);
+        color:var(--text);
+        line-height:1.6;
+        overflow-x:hidden;
+    }
+    ::-webkit-scrollbar{width:8px;}
+    ::-webkit-scrollbar-track{background:var(--primary);}
+    ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px;}
+    nav{
+        position:fixed;top:0;width:100%;
+        background:rgba(10,14,39,.95);
+        backdrop-filter:blur(10px);
+        z-index:1000;padding:1rem 0;
+        border-bottom:1px solid var(--border);
+        transition:all .3s;
+    }
+    .nav-container{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;justify-content:center;align-items:center;}
+    .nav-links{display:flex;gap:2rem;}
+    .nav-links a{
+        color:var(--text-secondary);
+        text-decoration:none;
+        transition:all .3s;
+        position:relative;
+        font-size:.95rem;
+    }
+    .nav-links a:hover{color:var(--accent);}
+    .nav-links a::after{
+        content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;
+        background:var(--accent);transition:width .3s;
+    }
+    .nav-links a:hover::after{width:100%;}
+    .container{max-width:1200px;margin:0 auto;padding:0 2rem;}
+    .hero{
+        min-height:100vh;display:flex;align-items:center;
+        padding:120px 0 80px;
+        background:radial-gradient(circle at 20% 50%,rgba(99,102,241,.1)0%,transparent 50%);
+    }
+    .hero-content{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+    .hero-text h1{
+        font-size:clamp(2.5rem,5vw,4rem);
+        font-weight:800;margin-bottom:1rem;
+        background:var(--gradient);
+        -webkit-background-clip:text;
+        background-clip:text;color:transparent;
+        animation:fadeInUp .8s ease;
+    }
+    .hero-text .subtitle{
+        font-size:1.5rem;color:var(--accent-light);
+        margin-bottom:1.5rem;
+        animation:fadeInUp .8s ease .2s both;
+    }
+    .hero-text p{
+        color:var(--text-secondary);
+        margin-bottom:2rem;
+        animation:fadeInUp .8s ease .4s both;
+    }
+    .contact-info{
+        display:flex;gap:2rem;flex-wrap:wrap;
+        animation:fadeInUp .8s ease .6s both;
+    }
+    .contact-item{
+        display:flex;align-items:center;gap:.5rem;color:var(--text-secondary);
+    }
+    .contact-item span{color:var(--accent);}
+    .hero-visual{position:relative;animation:float 6s ease-in-out infinite;}
+    .stats-card{
+        background:var(--card-bg);
+        border:1px solid var(--border);
+        border-radius:20px;
+        padding:2.5rem;
+        backdrop-filter:blur(10px);
+    }
+    .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+    .stat-item{text-align:center;}
+    .stat-number{font-size:2.5rem;font-weight:700;color:var(--accent);display:block;}
+    .stat-label{color:var(--text-secondary);font-size:.9rem;}
+    section{padding:6rem 0;}
+    .section-title{
+        font-size:2.5rem;font-weight:700;text-align:center;
+        margin-bottom:3rem;
+        background:var(--gradient);
+        -webkit-background-clip:text;
+        background-clip:text;color:transparent;
+    }
+    .timeline{position:relative;padding:2rem 0;}
+    .timeline::before{
+        content:'';position:absolute;left:50%;top:0;bottom:0;
+        width:2px;background:var(--border);
+        transform:translateX(-50%);
+    }
+    .timeline-item{
+        display:flex;justify-content:space-between;align-items:center;
+        margin-bottom:4rem;position:relative;
+    }
+    .timeline-item:nth-child(even){flex-direction:row-reverse;}
+    .timeline-content{
+        width:45%;background:var(--card-bg);
+        border:1px solid var(--border);
+        border-radius:15px;padding:2rem;
+        backdrop-filter:blur(10px);
+        transition:all .3s;
+    }
+    .timeline-content:hover{
+        transform:translateY(-5px);
+        box-shadow:0 15px 30px rgba(99,102,241,.2);
+    }
+    .timeline-dot{
+        position:absolute;left:50%;transform:translateX(-50%);
+        width:20px;height:20px;background:var(--accent);
+        border-radius:50%;border:4px solid var(--primary);
+    }
+    .timeline-year{
+        font-size:1.2rem;color:var(--accent);
+        font-weight:600;margin-bottom:.5rem;
+    }
+    .timeline-title{font-size:1.3rem;font-weight:600;margin-bottom:1rem;}
+    .timeline-desc{color:var(--text-secondary);line-height:1.6;}
+    .certificates-grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:2rem;
+    }
+    .cert-card{
+        background:var(--card-bg);
+        border:1px solid var(--border);
+        border-radius:15px;
+        padding:2.5rem;
+        text-align:center;
+        backdrop-filter:blur(10px);
+        transition:all .3s;
+        cursor:pointer;
+    }
+    .cert-card:hover{
+        transform:translateY(-10px);
+        box-shadow:0 20px 40px rgba(99,102,241,.2);
+    }
+    .cert-icon{font-size:3rem;margin-bottom:1.5rem;}
+    .cert-name{font-size:1.2rem;font-weight:600;margin-bottom:.5rem;}
+    .cert-desc{color:var(--text-secondary);font-size:.9rem;}
+    .projects-section{background:var(--secondary);}
+    .projects-container{display:grid;gap:3rem;}
+    .project-category{
+        background:var(--card-bg);
+        border:1px solid var(--border);
+        border-radius:20px;
+        padding:2rem;
+        backdrop-filter:blur(10px);
+    }
+    .category-title{
+        font-size:1.8rem;font-weight:600;
+        margin-bottom:1.5rem;
+        color:var(--accent-light);
+    }
+    .project-grid{display:grid;gap:1.5rem;}
+    .project-card{
+        background:rgba(26,31,58,.8);
+        border:1px solid var(--border);
+        border-radius:15px;
+        padding:1.5rem;
+        transition:all .3s;
+    }
+    .project-card:hover{
+        transform:translateX(10px);
+        border-color:var(--accent);
+    }
+    .project-header{
+        display:flex;justify-content:space-between;align-items:start;
+        margin-bottom:1rem;
+    }
+    .project-title{font-size:1.2rem;font-weight:600;}
+    .project-period{
+        background:rgba(99,102,241,.2);
+        color:var(--accent);
+        padding:.2rem .8rem;
+        border-radius:20px;
+        font-size:.8rem;
+    }
+    .project-desc{
+        color:var(--text-secondary);
+        margin-bottom:1rem;
+        line-height:1.6;
+    }
+    .project-tags{
+        display:flex;gap:.5rem;flex-wrap:wrap;
+    }
+    .tag{
+        background:rgba(99,102,241,.1);
+        color:var(--accent-light);
+        padding:.2rem .8rem;
+        border-radius:20px;
+        font-size:.8rem;
+        border:1px solid rgba(99,102,241,.3);
+    }
+    .ai-assistant{
+        background:var(--card-bg);
+        border:1px solid var(--border);
+        border-radius:20px;
+        padding:3rem;
+        backdrop-filter:blur(10px);
+        margin:3rem 0;
+    }
+    .assistant-header{
+        display:flex;align-items:center;gap:1.5rem;
+        margin-bottom:2rem;
+    }
+    .assistant-avatar{
+        width:60px;height:60px;
+        background:var(--gradient);
+        border-radius:15px;
+        display:flex;align-items:center;justify-content:center;
+        font-size:1.5rem;font-weight:bold;color:white;
+    }
+    .chat-container{
+        background:var(--secondary);
+        border-radius:15px;
+        padding:2rem;
+        min-height:400px;
+        border:1px solid var(--border);
+    }
+    .chat-messages{
+        height:300px;
+        overflow-y:auto;
+        margin-bottom:1.5rem;
+        padding-right:10px;
+    }
+    .chat-message{
+        margin-bottom:1rem;
+        display:flex;gap:1rem;
+        animation:fadeIn .3s;
+    }
+    .chat-bubble{
+        max-width:70%;
+        padding:1rem;
+        border-radius:15px;
+    }
+    .chat-bubble.ai{
+        background:var(--gradient);
+        color:white;
+    }
+    .chat-bubble.user{
+        background:var(--secondary);
+        border:1px solid var(--border);
+        margin-left:auto;
+    }
+    .typing-indicator{
+        display:none;
+        align-items:center;gap:.3rem;
+        padding:1rem;
+    }
+    .typing-indicator span{
+        width:8px;height:8px;
+        background:var(--accent-light);
+        border-radius:50%;
+        animation:typing 1.4s infinite;
+    }
+    .typing-indicator span:nth-child(2){animation-delay:.2s;}
+    .typing-indicator span:nth-child(3){animation-delay:.4s;}
+    @keyframes typing{
+        0%,60%,100%{transform:translateY(0);}
+        30%{transform:translateY(-10px);}
+    }
+    .chat-input{
+        display:flex;gap:1rem;
+    }
+    .chat-input input{
+        flex:1;
+        background:var(--primary);
+        border:1px solid var(--border);
+        border-radius:10px;
+        padding:.8rem 1.2rem;
+        color:var(--text);
+        font-size:1rem;
+        transition:border-color .3s;
+    }
+    .chat-input input:focus{
+        outline:none;
+        border-color:var(--accent);
+    }
+    .chat-input button{
+        background:var(--gradient);
+        color:white;
+        border:none;
+        border-radius:10px;
+        padding:.8rem 2rem;
+        cursor:pointer;
+        font-size:1rem;
+        transition:transform .2s;
+    }
+    .chat-input button:hover:not(:disabled){
+        transform:scale(1.05);
+    }
+    .chat-input button:disabled{
+        opacity:.5;cursor:not-allowed;
+    }
+    .quick-questions{
+        display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap;
+    }
+    .quick-question{
+        background:rgba(99,102,241,.1);
+        border:1px solid rgba(99,102,241,.3);
+        color:var(--accent-light);
+        padding:.5rem 1rem;
+        border-radius:20px;
+        font-size:.85rem;
+        cursor:pointer;
+        transition:all .3s;
+    }
+    .quick-question:hover{
+        background:rgba(99,102,241,.2);
+        transform:translateY(-2px);
+    }
+    footer{
+        text-align:center;
+        padding:3rem 0;
+        border-top:1px solid var(--border);
+        color:var(--text-secondary);
+    }
+    @keyframes fadeInUp{
+        from{opacity:0;transform:translateY(30px);}
+        to{opacity:1;transform:translateY(0);}
+    }
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    @keyframes float{
+        0%,100%{transform:translateY(0);}
+        50%{transform:translateY(-20px);}
+    }
+    .scroll-reveal{
+        opacity:0;
+        transform:translateY(50px);
+        transition:all .8s;
+    }
+    .scroll-reveal.active{
+        opacity:1;
+        transform:translateY(0);
+    }
+    @media(max-width:768px){
+        .nav-links{display:none;}
+        .hero-content{grid-template-columns:1fr;text-align:center;}
+        .timeline::before{left:30px;}
+        .timeline-item{
+            flex-direction:column!important;
+            align-items:flex-start!important;
+            padding-left:60px;
+        }
+        .timeline-content{width:100%;}
+        .timeline-dot{left:30px;}
+        .certificates-grid{grid-template-columns:1fr;}
+        .contact-info{flex-direction:column;gap:.5rem;}
+        .stats-grid{grid-template-columns:1fr;}
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="#hero">首页</a>
+            <a href="#milestones">职业历程</a>
+            <a href="#certificates">认证资质</a>
+            <a href="#projects">项目经验</a>
+            <a href="#assistant">AI助手</a>
+        </div>
+    </div>
+</nav>
+
+<section id="hero" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>欧亚菲</h1>
+                <p class="subtitle">AI产品落地解决方案</p>
+                <!-- 这里的文字已更新 -->
+                <p>资深产品/项目管理经验，满腔热血投入AI应用落地与效能提升。持有AI人工智能训练师、PMP、ACP、CSM等多项国际认证，成功推动多个项目落地，2025年正式投入AI提效项目从0到1落地。</p>
+                <div class="contact-info">
+                    <div class="contact-item"><span>📞</span> 136****2935</div>
+                    <div class="contact-item"><span>✉️</span> 13684902935@126.com</div>
+                    <div class="contact-item"><span>📍</span> 深圳</div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="stats-card">
+                    <div class="stats-grid">
+                        <div class="stat-item"><span class="stat-number">资深</span><span class="stat-label">项目管理经验</span></div>
+                        <div class="stat-item"><span class="stat-number">30+</span><span class="stat-label">成功交付项目</span></div>
+                        <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">AI落地案例</span></div>
+                        <div class="stat-item"><span class="stat-number">30%</span><span class="stat-label">效率提升</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="milestones">
+    <div class="container">
+        <h2 class="section-title scroll-reveal">职业发展历程</h2>
+        <div class="timeline scroll-reveal">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2025 - 至今</div>
+                    <h3 class="timeline-title">平安科技 · AI项目经理</h3>
+                    <p class="timeline-desc">专注AI应用落地，主导"AI项目经理"智能体设计与推广，实现项目管理流程自动化，推动RAG技术在真实业务场景的应用。</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2018 - 2025</div>
+                    <h3 class="timeline-title">平安科技 · 资深项目经理</h3>
+                    <p class="timeline-desc">负责跨部门大型项目推进，协调100+人团队协作，主导企业级协作平台建设，获得集团级项目表彰。</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2017 - 2018</div>
+                    <h3 class="timeline-title">象界微链 · 技术项目经理</h3>
+                    <p class="timeline-desc">建立可视化项目监控机制，优化技术决策流程，缩短产品迭代周期，提升客户满意度。</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2012 - 2017</div>
+                    <h3 class="timeline-title">佳创视讯 · 硬件项目经理</h3>
+                    <p class="timeline-desc">负责大型项目交付与合作伙伴协同，优化流程并控制成本，维护核心供应商关系。</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="certificates">
+    <div class="container">
+        <h2 class="section-title scroll-reveal">专业认证</h2>
+        <div class="certificates-grid scroll-reveal">
+            <div class="cert-card">
+                <div class="cert-icon">🏆</div>
+                <h3 class="cert-name">信息系统项目管理师</h3>
+                <p class="cert-desc">国家高级职称认证</p>
+            </div>
+             <div class="cert-card">
+                <div class="cert-icon">🏆</div>
+                <h3 class="cert-name">高级人工智能训练师</h3>
+                <p class="cert-desc">AI应用认证资质</p>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-icon">🏆</div>
+                <h3 class="cert-name">PMP®</h3>
+                <p class="cert-desc">项目管理专业人士认证</p>
+            </div>
+    
+            <div class="cert-card">
+                <div class="cert-icon">🏆</div>
+                <h3 class="cert-name">CSM®</h3>
+                <p class="cert-desc">认证Scrum Master</p>
+            </div>
+            
+           
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="projects-section">
+    <div class="container">
+        <h2 class="section-title scroll-reveal">项目经验</h2>
+        <div class="projects-container">
+            <!-- AI 项目经验 -->
+            <div class="project-category scroll-reveal">
+                <h3 class="category-title">🤖 AI 应用落地项目</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4 class="project-title">AI项目经理智能体</h4>
+                            <span class="project-period">2025</span>
+                        </div>
+                        <p class="project-desc">主导"AI项目经理"智能体设计与推广，实现会议纪要、待办跟踪、周报生成等高频场景自动化，1个月内完成1.0版本上线。</p>
+                        <div class="project-tags">
+                            <span class="tag">RAG</span><span class="tag">Agent</span><span class="tag">自动化</span><span class="tag">效能提升</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4 class="project-title">员工万佛项目管理智能体</h4>
+                            <span class="project-period">2025</span>
+                        </div>
+                        <p class="project-desc">扩展多智能体应用场景，输出完整搭建指南，支持部门复用。显著降低项目经理事务性工作投入。</p>
+                        <div class="project-tags">
+                            <span class="tag">多智能体</span><span class="tag">知识库</span><span class="tag">复用推广</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4 class="project-title">需求管理智能体</h4>
+                            <span class="project-period">2026</span>
+                        </div>
+                        <p class="project-desc">支持需求指派、流转、周期催促及周报生成，推动研发团队代码生成效率提升20%。</p>
+                        <div class="project-tags">
+                            <span class="tag">需求管理</span><span class="tag">流程自动化</span><span class="tag">智能提醒</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 其他项目经验 -->
+            <div class="project-category scroll-reveal">
+                <h3 class="category-title">📊 大型项目管理</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4 class="project-title">企业级协作平台</h4>
+                            <span class="project-period">2022-2024</span>
+                        </div>
+                        <p class="project-desc">统筹40+业务项目（音视频、IM、直播、工作台），打造一体化协作平台，工作效率提升35%，用户覆盖率达80%。</p>
+                        <div class="project-tags">
+                            <span class="tag">平台建设</span><span class="tag">跨系统集成</span><span class="tag">用户覆盖80%</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4 class="project-title">科技五大转型项目集</h4>
+                            <span class="project-period">2021-2022</span>
+                        </div>
+                        <p class="project-desc">打造100个通用模块，复用500次，开发效率提升30%；整体实现成本降低及效率提升价值约9100万元。</p>
+                        <div class="project-tags">
+                            <span class="tag">中台建设</span><span class="tag">降本9100万</span><span class="tag">效率提升30%</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4 class="project-title">金融壹账通赋能项目</h4>
+                            <span class="project-period">2021-2022</span>
+                        </div>
+                        <p class="project-desc">带领100+团队赋能金融壹账通，建立数字化经营模式，支持陕西金控等外部项目中标，实现市场化落地。</p>
+                        <div class="project-tags">
+                            <span class="tag">金融科技</span><span class="tag">对外赋能</span><span class="tag">市场化落地</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4 class="project-title">知鸟业务科技支持</h4>
+                            <span class="project-period">2018-2020</span>
+                        </div>
+                        <p class="project-desc">支撑单场最高120万并发直播，疫情期间保障200+场线上培训，获2020年'抗疫特殊贡献个人奖'。</p>
+                        <div class="project-tags">
+                            <span class="tag">高并发</span><span class="tag">直播保障</span><span class="tag">抗疫贡献</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div id="assistant" class="ai-assistant scroll-reveal">
+        <div class="assistant-header">
+            <div class="assistant-avatar">AI</div>
+            <div>
+                <h2>AI 智能简历助手</h2>
+                <p style="color: var(--text-secondary); margin-top:5px;">基于我的完整简历信息，您可以询问任何关于我的专业背景、项目经验、技能特长等问题</p>
+            </div>
+        </div>
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message">
+                    <div class="chat-bubble ai">
+                        您好！我是欧亚菲的AI简历助手，我已经全面学习了欧亚菲的完整简历信息，包括丰富的项目管理经验、AI项目落地案例、专业认证等。请问您想了解哪些方面的信息？
+                    </div>
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="quick-questions">
+                <div class="quick-question" onclick="askQuestion('请介绍一下您的AI项目经验')">AI项目经验</div>
+                <div class="quick-question" onclick="askQuestion('您的主要专业技能有哪些')">专业技能</div>
+                <div class="quick-question" onclick="askQuestion('您的工作经历是怎样的')">工作经历</div>
+                <div class="quick-question" onclick="askQuestion('您取得了哪些认证资质')">认证资质</div>
+                <div class="quick-question" onclick="askQuestion('您的教育背景如何')">教育背景</div>
+                <div class="quick-question" onclick="askQuestion('您负责过哪些大型项目')">大型项目</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="请输入您的问题，我会基于简历内容为您详细解答...">
+                <button id="sendButton" onclick="sendMessage()">发送</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>© 2026 欧亚菲 | AI项目经理个人简历 | 智能问答 · 专业呈现</p>
+    </div>
+</footer>
+
+<script>
+    // 简历知识库
+    const resumeKnowledge = {
+        basicInfo: {
+            name: "欧亚菲",
+            phone: "13684902935",
+            email: "13684902935@126.com",
+            location: "深圳",
+            jobType: "社招",
+            birthYear: "1987"
+        },
+        education: {
+            university: "",
+            major: "电子信息工程",
+            degree: "本科"
+        },
+        experience: {
+            totalYears: "资深",
+            currentRole: "AI项目经理（内部效能/AI应用落地）",
+            company: "平安科技",
+            period: "2025.09-至今"
+        },
+        certifications: [
+            { name: "PMP", desc: "项目管理专业人士认证" },
+            { name: "ACP", desc: "敏捷项目管理专家" },
+            { name: "CSM", desc: "认证Scrum Master" },
+            { name: "信息系统项目管理师", desc: "国家高级职称认证" },
+            { name: "高级人工智能训练师", desc: "AI应用专业认证" }
+        ],
+        skills: {
+            aiApplications: ["Agent场景设计与使用", "Prompt编写"],
+            methodology: ["MVP验证", "需求拆解", "项目推进"],
+            tools: ["神兵", "禅道", "平安智能体", "多维表"]   // 已修改
+        },
+        aiProjects: [
+            {
+                name: "AI项目经理智能体",
+                period: "2024-2025",
+                description: "主导AI项目经理智能体设计与推广，实现会议纪要、待办跟踪、周报生成等高频场景自动化，1个月内完成1.0版本上线",
+                tags: ["RAG", "Agent", "自动化", "效能提升"]
+            },
+            {
+                name: "员工万佛智能体平台",
+                period: "2025",
+                description: "扩展多智能体应用场景，输出完整搭建指南，支持部门复用。显著降低项目经理事务性工作投入",
+                tags: ["多智能体", "知识库", "复用推广"]
+            },
+            {
+                name: "需求管理智能体",
+                period: "2025",
+                description: "支持需求指派、流转、周期催促及周报生成，推动研发团队代码生成效率提升20%",
+                tags: ["需求管理", "流程自动化", "智能提醒"]
+            },
+            {
+                name: "IT采购咨询智能体",
+                period: "2024",
+                description: "搭建IT采购咨询智能体，集成知识库问答，减少重复咨询量40%；利用多维表重构数据模板，数据处理效率提升25%",
+                tags: ["智能客服", "知识图谱", "降本增效"]
+            }
+        ],
+        largeProjects: [
+            {
+                name: "企业级协作平台",
+                period: "2022-2024",
+                description: "统筹40+业务项目（音视频、IM、直播、工作台），打造一体化协作平台，工作效率提升35%，用户覆盖率达80%",
+                tags: ["平台建设", "跨系统集成", "用户覆盖80%"]
+            },
+            {
+                name: "科技五大转型项目集",
+                period: "2021-2022",
+                description: "打造100个通用模块，复用500次，开发效率提升30%；整体实现成本降低及效率提升价值约9100万元",
+                tags: ["中台建设", "降本9100万", "效率提升30%"]
+            },
+            {
+                name: "金融壹账通赋能项目",
+                period: "2021-2022",
+                description: "带领100+团队赋能金融壹账通，建立数字化经营模式，支持陕西金控等外部项目中标，实现市场化落地",
+                tags: ["金融科技", "对外赋能", "市场化落地"]
+            },
+            {
+                name: "知鸟业务科技支持",
+                period: "2018-2020",
+                description: "支撑单场最高120万并发直播，疫情期间保障200+场线上培训，获2020年'抗疫特殊贡献个人奖'",
+                tags: ["高并发", "直播保障", "抗疫贡献"]
+            }
+        ],
+        careerHistory: [
+            {
+                company: "平安科技",
+                position: "AI项目经理（内部效能/AI应用落地）",
+                period: "2025.09-至今",
+                achievements: [
+                    "参与集团AI提效项目推进，推动大模型与RAG能力在真实业务流程中的落地应用",
+                    "设计并推进「AI项目经理」在会议纪要、待办跟踪、问题提醒、进度同步、日报/周报生成等高频场景中的实际使用",
+                    "基于真实项目文档与智能表数据，搭建智能问答与定时提醒能力",
+                    "在核心项目「员工万佛」中持续扩展多个智能体应用场景，并输出较完整的使用与搭建指南"
+                ]
+            },
+            {
+                company: "平安科技",
+                position: "资深项目经理/项目总监",
+                period: "2018.12-2025.09",
+                achievements: [
+                    "长期负责跨部门大型项目推进与PMO相关工作，协调100+人团队协作",
+                    "主导企业级协作平台建设项目，整合多模块能力，在多个核心业务场景落地",
+                    "负责经营分析与数字化降本项目，通过数据模型与资源整合优化成本结构",
+                    "在IT咨询与研发支持场景中，探索问答类应用雏形"
+                ]
+            },
+            {
+                company: "象界微链",
+                position: "技术项目经理",
+                period: "2017.07-2018.12",
+                achievements: [
+                    "建立可视化项目监控机制，优化技术决策流程",
+                    "统筹内外部资源交付，提升客户满意度"
+                ]
+            },
+            {
+                company: "深圳市佳创视讯",
+                position: "硬件项目经理",
+                period: "2012.07-2017.07",
+                achievements: [
+                    "负责大型项目交付与合作伙伴协同",
+                    "优化流程并控制成本"
+                ]
+            }
+        ]
+    };
+
+    // AI回答生成
+    function generateAnswer(question) {
+        const q = question.toLowerCase();
+
+        if (q.includes('ai项目') || q.includes('ai经验') || q.includes('ai落地')) {
+            return `我在AI项目落地方面有丰富的实践经验：
+
+🤖 主要AI项目：
+1. **AI项目经理智能体**（2024‑2025）  
+   - 实现会议纪要、待办跟踪、周报生成等场景自动化，1个月完成1.0版本上线
+2. **员工万佛智能体平台**（2025）  
+   - 扩展多智能体应用，输出完整搭建指南，支持部门复用
+3. **需求管理智能体**（2025）  
+   - 提升研发代码生成效率20%
+4. **IT采购咨询智能体**（2024）  
+   - 减少重复咨询40%，数据处理效率提升25%
+
+✨ 核心能力：
+- RAG（检索增强生成）实战
+- Agent 场景设计与使用
+- Prompt 编写优化
+- 跨部门协作与快速交付（1个月完成1.0版本）
+
+💡 成效：显著降低项目经理事务性工作投入，整体项目推进效率提升。`;
+        }
+
+        if (q.includes('技能') || q.includes('能力') || q.includes('专长')) {
+            return `我的专业技能涵盖多个维度：
+
+🎯 AI应用技能：
+- Agent 场景设计与使用
+- Prompt 编写与优化
+- RAG 检索增强生成实战
+
+📋 项目管理方法论：
+- MVP 验证
+- 需求拆解
+- 项目推进
+- 敏捷项目管理
+- 跨部门大型项目管理
+
+🛠️ 熟悉工具：神兵、禅道、平安智能体、多维表
+
+📚 专业认证：
+- PMP®（项目管理专业人士）
+- ACP®（敏捷项目管理专家）
+- CSM®（认证 Scrum Master）
+- 信息系统项目管理师（国家高级职称）
+- 高级人工智能训练师（AI 应用专业认证）`;
+        }
+
+        if (q.includes('工作') || q.includes('经历') || q.includes('职业')) {
+            return `我的职业发展历程：
+
+📅 **2025.09‑至今**：平安科技 – AI项目经理  
+- 专注 AI 应用落地与内部效能提升  
+- 主导多个 AI 项目从 0 到 1 落地
+
+📅 **2018.12‑2025.09**：平安科技 – 资深项目经理 / 项目总监  
+- 跨部门大型项目推进，协调 100+ 人团队  
+- 主导企业级协作平台建设，获集团级表彰
+
+📅 **2017.07‑2018.12**：象界微链 – 技术项目经理  
+- 建立可视化项目监控，缩短迭代周期
+
+📅 **2012.07‑2017.07**：佳创视讯 – 硬件项目经理  
+- 大型项目交付与合作伙伴协同，成本控制
+
+💫 转型亮点：从传统项目管理成功转型为 AI 应用落地专家。`;
+        }
+
+        if (q.includes('认证') || q.includes('资质') || q.includes('证书')) {
+            return `我持有以下专业认证：
+
+🏆 **国际认证**  
+- PMP®（项目管理专业人士）  
+- ACP®（敏捷项目管理专家）  
+- CSM®（认证 Scrum Master）
+
+🏆 **国内认证**  
+- 信息系统项目管理师（国家高级职称）
+
+🏆 **AI 专业认证**  
+- 高级人工智能训练师（2024年9月通过）
+
+📚 持续学习：自 2023 年起系统研究 AI 应用，已成功完成多项 AI 产品/应用的 0‑1 落地。`;
+        }
+
+        if (q.includes('大型项目') || q.includes('重点项目')) {
+            return `我负责过多个大型项目：
+
+🏗️ **企业级协作平台**（2022‑2024）  
+- 统筹 40+ 业务项目（音视频、IM、直播、工作台）  
+- 工作效率提升 35%，用户覆盖率 80%
+
+🚀 **科技五大转型项目集**（2021‑2022）  
+- 100 个通用模块，复用 500 次  
+- 开发效率提升 30%  
+- 成本降低及效率提升价值约 9100 万元
+
+💰 **金融壹账通赋能项目**（2021‑2022）  
+- 带领 100+ 团队，建立数字化经营模式  
+- 支持陕西金控等外部项目中标，实现市场化落地
+
+📺 **知鸟业务科技支持**（2018‑2020）  
+- 支撑单场最高 120 万并发直播  
+- 疫情期间保障 200+ 场线上培训  
+- 获 2020 年“抗疫特殊贡献个人奖”。`;
+        }
+
+        if (q.includes('教育') || q.includes('学历') || q.includes('大学')) {
+            return `我的教育背景：
+
+    📚 **专业**：电子信息工程  
+    🏅 **学历**：本科（2008‑2012，预估）  
+
+    💡 专业基础为我的技术项目管理提供了扎实的理论支撑。`;
+        }
+
+        return `感谢您的提问！基于欧亚菲的完整简历，我可以为您提供以下信息：
+
+📊 **项目管理经验** – 跨部门大型项目、PMO、协作平台建设  
+🤖 **AI 项目实战** – 4 大 AI 落地案例，涵盖 RAG、Agent、智能客服等  
+🏆 **专业认证** – PMP、ACP、CSM、信息系统项目管理师、高级人工智能训练师  
+🛠️ **熟悉工具** – 神兵、禅道、平安智能体、多维表  
+🎓 **教育背景** – 电子信息工程本科
+
+请告诉我您想进一步了解的具体方向，我会为您提供更详细的答案。`;
+    }
+
+    // 发送消息
+    function sendMessage() {
+        const input = document.getElementById('chatInput');
+        const messagesContainer = document.getElementById('chatMessages');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const sendButton = document.getElementById('sendButton');
+
+        const question = input.value.trim();
+        if (!question) return;
+
+        // 禁用输入和按钮
+        input.disabled = true;
+        sendButton.disabled = true;
+
+        // 添加用户消息
+        const userMsg = document.createElement('div');
+        userMsg.className = 'chat-message';
+        userMsg.innerHTML = `<div class="chat-bubble user">${question}</div>`;
+        messagesContainer.appendChild(userMsg);
+
+        // 清空输入框
+        input.value = '';
+
+        // 滚动到底部
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        // 显示打字指示器
+        typingIndicator.style.display = 'flex';
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        // 模拟 AI 回答
+        setTimeout(() => {
+            typingIndicator.style.display = 'none';
+            const aiMsg = document.createElement('div');
+            aiMsg.className = 'chat-message';
+            aiMsg.innerHTML = `<div class="chat-bubble ai">${generateAnswer(question)}</div>`;
+            messagesContainer.appendChild(aiMsg);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // 恢复输入框
+            input.disabled = false;
+            sendButton.disabled = false;
+            input.focus();
+        }, 1500);
+    }
+
+    // 快速提问
+    function askQuestion(q) {
+        document.getElementById('chatInput').value = q;
+        sendMessage();
+    }
+
+    // 回车发送
+    document.getElementById('chatInput').addEventListener('keypress', e => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // 滚动显示动画
+    const revealEls = document.querySelectorAll('.scroll-reveal');
+    const onScrollReveal = () => {
+        revealEls.forEach(el => {
+            const top = el.getBoundingClientRect().top;
+            const bottom = el.getBoundingClientRect().bottom;
+            if (top < window.innerHeight && bottom > 0) el.classList.add('active');
+        });
+    };
+    window.addEventListener('scroll', onScrollReveal);
+    onScrollReveal();
+
+    // 证书卡片 3D 效果
+    const certCards = document.querySelectorAll('.cert-card');
+    certCards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const cx = rect.width / 2;
+            const cy = rect.height / 2;
+            const rotateX = (y - cy) / 10;
+            const rotateY = (cx - x) / 10;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+    });
+
+    // 导航栏滚动效果
+    const navbar = document.querySelector('nav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const cur = window.pageYOffset;
+        if (cur > 100) {
+            navbar.style.background = 'rgba(10, 14, 39, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+        } else {
+            navbar.style.background = 'rgba(10, 14, 39, 0.95)';
+            navbar.style.boxShadow = 'none';
+        }
+        lastScroll = cur;
+    });
+
+    // 标题打字机效果
+    const heroTitle = document.querySelector('.hero-text h1');
+    const fullTitle = heroTitle.textContent;
+    heroTitle.textContent = '';
+    let idx = 0;
+    function typeWriter() {
+        if (idx < fullTitle.length) {
+            heroTitle.textContent += fullTitle.charAt(idx);
+            idx++;
+            setTimeout(typeWriter, 100);
+        }
+    }
+    setTimeout(typeWriter, 500);
+</script>
+</body>
+</html>
